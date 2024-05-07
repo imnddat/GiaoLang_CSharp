@@ -1,0 +1,614 @@
+* KIẾN TRÚC 3 LỚP 3-LAYER ARCHITECTURE KHI LÀM 1 CÁI APP (KẾT QUẢ) -> SOLUTION (QUÁ TRÌNH LÀM)
+* SOLUTION:
+	PROJECT 1 - UI
+			* CONSOLE APP .EXE .DLL : MAIN()
+			* WINDOWS FORMS .EXE .DLL : MAIN() ĐỂ XUẤT PHÁT
+
+	PROJECT 2 - REPOSITORIES - CƠ SỞ DỮ LIỆU 
+			* CLASS LIBRARY .DLL
+			ENTITIES\
+				CLASS LIÊN QUAN ĐẾN TABLE, MAP XUỐNG TABLE CỦA DATABASE
+			...\
+
+	PROJECT 3 - SERVICES - THAO TÁC TRÊN DỮ LIỆU TRONG RAM
+			* CLASS LIBRARY .DLL
+			- CLASS CHỨA NHIỀU OBJECT
+			- CLASS DẠNG THÙNG CHỨA CABINET/BOX/CONTAINER/BAG
+			 > LIST <THỨ CẦN XỬ LÝ, LƯU TRỮ - ENTITIES: STUDENT, LECTURER>
+			 > CRUD METHODS
+
+* XÀI MẢNG, LIST<???>
+* XÀI GENERIC CABINET<???>
+* ADD REFERENCE TỚI PROJECT CẦN THIẾT - ADD DEPENDENCY (CHECK OPTION COPY LOCAL = YES)
+=====================================================================================
+DATA TYPE 			- VALUE 			- VARIABLE
+KIỂU DỮ LIỆU			GIÁ TRỊ				BIẾN, ĐỊNH DANH, NICKNAME, GỌI TÊN CHO 1 ĐIỀU GÌ ĐÓ
+TỔNG KẾT								INDENTIFIER
+TÊN GỌI VỀ HÌNH THÁI,
+HÌNH DẠNG CỦA GIÁ TRỊ
+
+
+Giải mã công thức:
+1. CÔNG THỨC #1: VỀ MỐI LIÊN HỆ GIỮA 3 THÀNH PHẦN CỦA BỘ 3 HUYỀN THOẠI - GÓC ĐỘ KHÁI NIỆM
+
+DATA TYPE 	| VALUE -> VARIABLE
+		| VALUE -> VARIABLE
+		| VALUE -> VARIABLE
+		| VALUE -> VARIABLE
+		| VALUE -> VARIABLE
+
+2. CÔNG THỨC #2: VỀ MỐI LIÊN HỆ GIỮA 3 THÀNH PHẦN CỦA BỘ 3 HUYỀN THOẠI - GÓC ĐỘ THỰC THI
+
+int yob = 2003;
+int currentYear = 2024;
+Student s1 = new Student("SE1", "AN NGUYEN", 2003, 8.6); // using contructor
+Student s2 = new Student(id: "SE1", name: "AN NGUYEN", yob: 2003, gpa: 8.6); // using named parameters
+Student s3 = new Student(){Id: "SE1", Name: "AN NGUYEN", Yob: 2003, Gpa: 8.6}; // using object initializers
+
+=> Hiểu về mối quan hệ 3 món trên
+=> Hiểu được DELEGATE là gì? ở mức bản chất nhất 
+				từ đó ta sẽ hiểu được các khái niệm liên quan phía sau
+				- LẬP TRÌNH HÀM - FUNCTIONAL PROGRAMMING
+				- DEPENDENCY INJECTION
+				- LINQ  ~~~~  STREAM API BÊN JAVA!!!
+				- ANONYMOUS FUNCTION, LAMDBA EXPRESSION
+				- CALLBACK FUNCTION
+
+I. NGỮ PHÁP TIẾNG VIỆT
+1. ĐỊNH NGHĨA DANH TỪ: LÀ 1 TỪ HAY VÀI TỪ NÓI VÊ
+			LÀ 1 TỪ HAY VÀI TỪ DÙNG ĐỂ ĐẶT TÊN GỌI CHO 1 SỰ VẬT, HIỆN TƯỢNG, 
+			SỰ KIỆN NÀO ĐÓ QUANH TA
+
+* Ví dụ: Con Mèo, Cơn Mưa, Bài Hát...
+
+2. DANH TỪ CHUNG: [TÊN GỌI CHUNG CHO NHIỀU MÓN]
+* ĐỊNH NGHĨA:LÀ NHỮNG TỪ DIỄN TẢ KHẢI NIỆM CHUNG, NÓI VỀ 1 NHÓM CÁC THỨ GÌ ĐÓ QUANH TA
+	LÀ TÊN GỌI CHUNG CHO 1 NHÓM ĐỐI TƯỢNG, VALUE, VẬT THỂ XUNG QUANG TA - CHUNG CHUNG CHO MỌI NGƯỜI
+
+* VÍ DỤ: Thủ đô, Quốc gia, Châu lục, Hành tinh, Đại dương, Quốc lộ, Ngôi nhà, Con người, con chó, con mèo, ...
+
+3. DANH TỪ RIÊNG: [TÊN GỌI CỤ THỂ CHO 1 MÓN GÌ ĐÓ]
+* ĐỊNH NGHĨA: LÀ NHỮNG TỪ DÙNG ĐỂ GỌI TÊN, ĐẶT TÊN CHO, TÊN GỌI CHO 1 THỨ CỤ THỂ NÀO ĐÓ QUANH TA
+		LÀ TÊN, NICK NAME CHO 1 THỨ CỤ THỂ QUANH TA, NÓ DÙNG ĐỂ PHÂN BIỆT THỨ NÀY VỚI THỨ KHÁC, 
+								XÁC ĐỊNH RÕ RÀNG DUY NHẤT 1 THỨ NÀO ĐÓ
+								ĐỊNH DANH - ĐỊNH RA TÊN GỌI CHO THỨ GÌ ĐÓ
+								INDENTIFIER (N), INDENTIFY (N)
+
+* VÍ DỤ: Hà Nội, Việt Nam, ly trà sữa của tui, điện thoại iphone của tôi...
+
+>>>>> CHỐT HẠ: DANH TỪ CHUNG: LÀ TÊN GỌI CHO 1 NHÓM NHIÊU THỨ		-> Dog		Person
+	       DANH TỪ RIÊNG: LÀ TÊN GỌI CHO 1 THỨ DUY NHẤT NÀO ĐÓ      -> Milu		Tèo, Tí
+
+II. BỘ 3 HUYỀN THOẠI: DATA TYPE | VALUE | VARIABLE
+
+0. THING, THINGS, VẠN VẬT QUANH TA
+
+1. SIMPLE VALUE/SINGLE VALUE - GIÁ TRỊ ĐƠN, GIÁ TRỊ ĐƠN GIẢN
+
+2. COMPLEX VALUE | COMPOSITE VALUE | OBJECT VALUE | [STRUCTURE/STRUCT VALUE]
+   GIÁ TRỊ PHỨC TẠP, GIÁ TRỊ PHỨC HỢP
+   NHỮNG THỨ MÀ DO NHIỀU THÀNH PHẦN KHÁC HỢP LẠI TẠO THÀNH
+
+3. QUẢN LÝ CÁC THINGS/SỰ VẬT QUANH TA
+- NHỮNG GÌ XUẤT HIỆN QUANH TA THÌ GỌI LÀ VẠN VẬT, THÌ GÌ ĐÓ - THING, THINGS (IOT)
+- VẠN VẬT QUANH TA ĐẾN VỚI TA, TRONG NHẬN THỨC, CÁCH GỌI, CÁCH MÔ TẢ CỦA CON NGƯỜI THÌ VẠN VẬT CÓ 2 HÌNH THỨC: 
+	HÌNH THỨC ĐƠN GIẢN/ĐỊNH DẠNG ĐƠN GIẢN - HÌNH THỨC PHỨC TẠP
+HAY CÒN GỌI LÀ: MỌI THỨ QUANH TA CÓ HÌNH DẠNG LÀ GIÁ TRỊ ĐƠN GIẢN VÀ GIÁ TRỊ PHỨC TẠP
+
+* Ví dụ: 5 10 15 20 3.14
+	đúng/sai, đậu/rớt
+	Nguyễn Thanh Tùng-1994-Chúng ta của tương lai
+	Messi-10-Barcelona
+
+1. SIMPLE VALUE/SINGLE VALUE - GIÁ TRỊ ĐƠN, GIÁ TRỊ ĐƠN GIẢN - VẬT CÓ ĐỊNH DẠNG ĐƠN GIẢN
+* ĐỊNH NGHĨA: LÀ NHỮNG CON SỐ, NHỮNG ĐẠI LƯỢNG, TRẠNG THÁI NÀO ĐÓ, HÌNH THỨC THẺ HIỆN ĐƠN GIẢN VÀ NGẮN GỌN, CỰC KỲ ÍT TỪ/ CHỮ ĐỂ VIẾT RA NÓ!!!
+
+* VÍ DỤ:
+-273 -1 0 1 5 10 8% 0.8 10% 0.1 24.000.000 76.000.000 300.000 9.8 3.14 ĐÚNG/SAI ĐẬU/RỚT
+
+2. COMPLEX VALUE | COMPOSITE VALUE | OBJECT VALUE | [STRUCTURE/STRUCT VALUE]
+* ĐỊNH NGHĨA
+
+* VÍ DỤ: {GOM CÁC INFO ĐỂ BIỄU DIỄN 1 ĐIỀU GÌ ĐÓ CỤ THỂ, THING QUANH TA}
+{NGUYỄN THANH TÙNG, 1994, THÁI BÌNH, NHẠC VIỆN TP HCM, CHÚNG TA CỦA TƯƠNG LAI..., THIỀU BẢO TRÂM/HẢI TÚ}
+{NGUYỄN THÙY CHI, 1993, HÀ NỘI, RMIT, ANH ƠI Ở LẠI...}
+{HOÀNG THÙY LINH, 1998, HÀ NỘI, MIỀN ĐẤT HỨA, ĐỂ MỴ NÓI CHO MÀ NGHE}
+
+{EDSON ARANTES DO NASCIMENTO, 1940, BRASIL, GOAL: ???...}
+{LIONEL ANRE'S MESSION, 1987, ARGENTINA, GOAL: ???...}
+<<<CHRISTIANO RONALDO DO SANNTOS AVEIRO, 1985, PORTUGAL, GOAL: ???...>>>
+
+3. QUẢN LÝ CÁC THINGS/SỰ VẬT QUANH TA
+KHI QUANH TA CÓ QUÁ NHIỀU INFO, VẬT, SỰ VẬT, HIỆN TƯỢNG, TA CẦN PHẢI CÓ KỸ THUẬT TỔ CHỨC PHÂN NHÓM PHÂN LOẠI
+CHÚNG ĐẶT TÊN GỌI NHƯ THẾ NÀO ĐỂ ĐỄ DÀNG NHẬN DIỆN, TÌM KIẾM, BÀN LUẬN, XỬ LÝ CÁC THỨ ĐÓ
+
+[[[[[ 3.1 PHÂN NHÓM DỮ LIỆU, PHẦN NHÓM ĐỐI TƯỢNG, PHÂN LOẠI VALUE ]]]]]
+
+* PHÂN NHÓM DỮ LIỆU, PHÂN LOẠI DỮ LIỆU, CHIA NHÓM DỮ LIỆU, CHIA NHÓM VALUE, CLASSIFY/CLASSIFICATION/CLASS
+	GROP/CATEGORIZE
+
+	LÀ HÀNH ĐỘNG SẮP XẾP, GOM CÁC VALUE CÓ ĐẶC ĐIỂM/THỨ TƯƠNG ĐỒNG NHAU RA 1 CHỖ RIÊNG, CHO ĐÁM ĐÓ 1 CÁI TÊN???
+----------------------------------------------------------------
+-273 -1 0 1 5 10 8% 0.8, 10% 0.1 24.000.000 76.000.000 300.000 9.8 3.14 => ĐỀU LÀ NHỮNG CON SỐ, ĐẠI LƯỢNG
+=> 1 NHÓM SỐ THỰC - double, float [DANH TỪ CHUNG - DATA TYPE - TÊN GỌI 1 ĐÁM DỮ LIỆU CHUNG HÌNH DÁNG HÌNH THỨC]
+
+ĐÚNG/SAI ĐẬU/RỚT => 1 NHÓM NÓI VỀ 2 TRẠNG THÁI NGƯỢC NHAU => NHÓM BOOL, BOOLEAN bool boolean
+							[DANH TỪ CHUNG - DATA TYPE]
+
+---------------------------------------------------------------------
+
+-273 -1 0 1 5 10 24.000.000 76.000.000 300.000: ĐẠI LƯỢNG, CON SỐ, NGUYÊN CON KO LẺ MIẾNG NÀO
+						THE WHOLE NUMBER: int, long, Integer, Long
+
+0.1 , 8% 0.8, 10%, 9.8, 3.14: ĐẠI LƯỢNG, CON SỐ, CÓ BỊ SỨT MÉ ÍT NHIÊU: float, double
+
+ĐÚNG/SAI ĐẬU/RỚT: bool, boolean
+
+----------------------------------------------------------------
+(NGUYỄN THANH TÙNG, 1994, THÁI BÌNH, NHẠC VIỆN TP.HCM, CHÚNG TA CỦA TƯƠNG LẠI..., THIỀU BẢO TRÂM/HẢI TÚ}
+(NGUYÊN THUỲ CHI, 1993, HÀ NỘI, RMIT, ANH ƠI Ở LẠI...}
+(HOÀNG THUỲ LINH, 1988, HÀ NỘI, MIỀN ĐẤT HỨA, ĐỂ MỴ NÓI CHO MÀ NGHE ... }
+{TAYLOR ALLISON SWIFT, 1989, US, CARILINA XA NGOÀI KIA NƠI LOÀI TÔM HÁT... }
+		>>>>>>> NHÓM CASI, SINGER, class Singer
+
+{EDSON ARANTES DO NASCIMENTO, 1940, BRASIL, GOALS: ??? ...}
+{LIONEL ANRE'S MESSI, 1987, ARGENTINA, GOALS: ??? ...}
+<<<<<CHRISTIANO RONALDO DOS SANNTOS AVEIRO, 1985, PORTUGAL, GOALS: ??? ...›››››
+		>>>>>> NHÓM CẦU THỦ, PLAYER, FOOTBALLER, class Player
+
+CÁCH CHIA NHÓM, GOM NHÓM, ĐẶT TÊN NHÓM: TIÊU CHÍ PHÂN LOẠI LÀ CON NGƯỜI LÀ ĐỦ RỒI, KO BÀN NGHỀ NGHIỆP
+=> NHÓM CON NGƯỜI, NHÓM PERSON, class Person 
+=> DỮ LIỆU PHỨC TẠP TA CŨNG PHÂN LOẠI VÀ ĐẶT TÊN THEO TIÊU CHÍ NÀO ĐÓ, TÊN GỌI NÀY CÒN ĐƯỢC GỌI LÀ 
+CLASS/ENTITY - SỰ PHÂN HẠNG DỮ LIỆU PHỨC TẠP 
+=> DANH TỪ CHUNG DÙNG CHO VIỆC ĐẶT TÊN GỌI NHÓM DỮ LIỆU ĐƠN GIẢN, PHỨC TẠP ==>> TẠO RA DATA TYPE
+
+CÁCH CHIA NHÓM THEO TIÊU CHÍ NGHỀ NGHIỆP: Singer, Player
+
+[[[[[ 3.2 ĐẶT TÊN GỌI, NICK NAME CHO TỪNG VALUE CỤ THỂ TRONG CÁI NHÓM ĐÃ ĐẶT TÊN Ở 3.1
+	ĐINH DANH ĐÔI TƯƠNG/VALUE ]]]]
+
+
+* VÍ DU:
+-273 -1 0 1 5 10      8% 0.8 10% 0.1 24.000.000     76.000.000  300.000 9.8 3.14 ĐÚNG/SAI ĐẬU/RỚT
+  x   y z     grade  -----------     salary	    salary(SA)  price    x		passed_môn
+  K                   x, VAT	     exchange-rate		total    g
+* VÍ DỤ:
+(NGUYỄN THANH TÙNG, 1994, THÁI BÌNH, NHẠC VIỆN TP.HCM, CHÚNG TA CỦA TƯƠNG LẠI..., THIỀU BẢO TRÂM/HẢI TÚ}
+		-> Sếp = {...}
+			= {người trả lương cho tui/bạn ...}
+
+
+(NGUYÊN THUỲ CHI, 1993, HÀ NỘI, RMIT, ANH ƠI Ở LẠI...} => chipu
+(HOÀNG THUỲ LINH, 1988, HÀ NỘI, MIỀN ĐẤT HỨA, ĐỂ MỴ NÓI CHO MÀ NGHE ... } => linh (camle case)
+{TAYLOR ALLISON SWIFT, 1989, US, CARILINA XA NGOÀI KIA NƠI LOÀI TÔM HÁT... }
+
+{EDSON ARANTES DO NASCIMENTO, 1940, BRASIL, GOALS: ??? ...} => king, pele'
+{LIONEL ANRE'S MESSI, 1987, ARGENTINA, GOALS: ??? ...} => leo, m10
+<<<<<CHRISTIANO RONALDO DOS SANNTOS AVEIRO, 1985, PORTUGAL, GOALS: ??? ...››››› => cr7
+
+============================================================================
+1. CHỐT HẠ #1: DATA TYPE KIỂU DỮ LIỆU LÀ TÊN GỌI ĐẠI DIỆN CHO 1 NHÓM DỮ LIỆU CÓ CHUNG ĐỊNH DẠNG, HÌNH THỨC 
+					DANH TỪ CHUNG
+		NÓI VỀ DATA TYPE VÀ NÓI VỀ RẤT RẤT NHIỀU VALUE ĐỒNG DẠNG, VÀ ĐƯỢC GỌI CHUNG 1 CÁI TÊN
+		int, long, double, float, bool, boolean, char
+
+		Person, Student, Lecturer, Doctor, Dog, Cat, Pet, Device, Phone, Product, Food, Drink ...
+		***** NHẬN DIỆN CLASS CHÍNH LÀ TÌM TÊN GỌI, DANH TỪ CHUNG CHO 1 ĐÁM OBJECT/VALUE PHỨC TẠP
+			NGOÀI KIA MÀ SHARE CHUNG ĐẶC ĐIỂM HÀNH VI, CHUNG ĐỊNH DẠNG !!!
+		***** GÓC NHÌN LƯU TRỮ DATA XUỐNG DATABASE CHÍNH LÀ ĐI TÌM CÁC ENTITY - TÊN THỰC THỂ - ERD RA ĐỜI!!!
+
+2. CHỐT HẠ #2: KHAI BÁO BIẾN/VARIABLE: LÀ CÁCH ĐẶT TÊN CHO 1 THỨ CỤ THỂ NÀO ĐÓ QUANH TA: ĐƠN GIẢN, PHỨC TẠP
+				THỨ ĐƠN GIẢN NÀY NÓ LÀ 1 VALUE THUỘC 1 NHÓM NÀO ĐÓ = NHÓM CHÍNH LÀ DATA TYPE
+
+3. CHỐT HẠ #3: DATA TYPE TÊN GỌI CHUNG CHO CẢ ĐÁM...			DANH TỪ CHUNG: NHÓM PHỨC TẠP CÒN GỌI LÀ CLASS/ENTITY
+		VARIABLE TÊN GỌI RIÊNG CHO TỪNG ĐỨA TRONG ĐÁM		DANH TỪ RIÊNG
+
+4. DIỄN GIẢI CÂU LỆNH DƯỚI DÂY THEO STYLE BỘ 3 HUYỀN THOẠI
+
+int 		yob 			= 	2003;
+data type	tên gọi				value cụ thể
+		cho 1 value cụ thể		thuộc về data type int
+
+* TA NÓI VỀ CÁI RIÊNG 2003 YOB TRONG CÁI CHUNG INT
+* TA NÓI VỀ CÁI CHUNG INT VÀ CÓ 1 CÁI RIÊNG 2003 GỌI NÓ LÀ YOB
+
+int c = 3.14;
+int salary = 76.000;
+float PI = 3.14;
+
+Player 			r7 				= 	(Christianno...}
+data type		variable				value cụ thể
+ta nói về các		trong đó có 1 bạn 			và thông tin cụ thể về bạn cầu thủ
+cầu thủ nói chung	gọi tắt là, nick là r7			đó là {...}
+
+Player m10 = {Lionel Andre's...}
+Singer sếp = {Nguyễn Thanh Tùng...}
+
+5. CHỐT HẠ VỀ TEMPLATE KHAI BÁO BIẾN, KIỂU DỮ LIỆU, VALUE - DECLARATION OF A VARIABLE & VALUE
+	DATA-TYPE VARIBALE-NAME = VALUE TO SPECIFY A UNIQUE/SPECIFIC VALUE/THING
+	kiểu-dữ-liêu	tên-biến	= 	value
+
+NẾU VALUE PHỨC TẠP, THÌ NHỚ GOM INFO VÀO () HOẶC {} ĐỂ THÀNH CỤM COMPOSITE 1 CỤC THÔNG TIN
+VALUE ĐƠN GIẢN = LUÔN
+
+double grade = 10;
+
+Player m10 = {Lionel Andre's...}
+Player m10 = new Player()
+Player m10 = new Player(...){...}
+Player m10 = new (...)
+
+============================================================================
+NGOẠI TRUYỆN: JSON - JavaScript Object Notation
+		     J   S	O	N
+	Cách biểu diễn thông tin của 1 đối tượng/thứ value phức tạp
+	theo style TEXT dễ đọc kể cả với ng ngoại đạo, ĐƯỢC DÙNG TRONG JAVASCRIPT
+
+{"Id" : "HE161899", "Name" : "Nguyen Duc Dat", "Yob" : 2002, "Country" : "Viet Nam"}
+============================================================================
+
+>>>>>> Mối quan hệ giữa 3 huyền thoại
+1 DATA TYPE CÓ NHIỀU VALUE
+1 VALUE ỨNG VỚI 1 BIẾN NÀO ĐÓ
+BIẾN CÓ THỂ ĐỔI SANG VALUE KHÁC int yob = 2003; = 2004;
+
+III. DELEDATE - MIND SHIFT - SỰ DỊCH CHUYỂN TRONG NHẬN THỨC/TƯ DUY, PHÁ TƯ DUY CŨ, CỞI MỞ CHO ĐIỀU MỚI LẠ
+
+0. 1ST SHIFT - GENERIC - PASS A DATA TYPE AS A PARAMETER, ĐƯA "VALUE" CHO HÀM KO LÀ KO VALUE THÔNG THƯỜNGG
+								MÀ LẠI LÀ 1 DATA TYPE
+* HÀM TRUYỀN THỐNG
+
+void AddItem(int) 	void AddItem(Student s) 	void AddItem(Lecturer l)
+
+AddItem(5) 		AddItem(new Student(){})	AddItem(new Lecturer(){})
+AddItem(10)		AddItem(new Student(){})
+
+Tui biết trước cần đưa value gì vào hàm qua parameter
+
+* HÀM GENERIC - CÓ 2 THỨ CẦN ĐƯA VÀO
+
+void AddItem(<T> v)
+
+AddItem(<Student> new Student(){})
+AddItem(<int> 5)
+
+Sau khi xác định kiểu dữ liệu ta mới đưa tiếp value của kiểu dữ liệu đó - 2 lần đưa, 2 lần đưa data type được đưa vào!!!
+
+1. DELEGATE LÀ GÌ? LÀ CÁCH ĐẶT TÊN NHÓM CHO 1 ĐÁM DỮ LIỆU/VALUE PHỨC TẠP, CLASS NAME
+			DÁM VALUE PHỨC TẠP NÀY LÀ ĐÁM NÀO, {...} HAY KO
+			ĐI TÌM DANH TỪ CHUNG CHO 1 ĐÁM VALUE NÀO ĐÓ, KO PHẢI VALUE ĐƠN GIẢN, PHỨC TẠP NHƯ Ở TRÊN
+			MÀ LÀ 1 THỨ PHỨC TẠP KHÁC!
+
+* 2ND MIND SHIFT - TA NHÌN SOURCE CODE CỦA TA (DATA + METHOD, BIẾN/DỮ LIỆU VÀ HÀM)
+
+* TA NHÌN THẤY CÓ RẤT RẤT NHIỀU HÀM (XỬ LÝ INFO/DATA) TRONG CÁC FILE SOURCE
+
+* VALUE - CÁC HÀM
+
+void SayHello0 (...}								NO INPUT - NO RETURN
+void SayHelloToEveryOne() {...}							NO INPUT - NO RETURN
+void F1) {...}									NO INPUT - NO RETURN
+
+void ComputePower (int n) {...} //tính mũ 2, in ra kq				INPUT
+void ComputeSquareRoot(int n) {...} //tính căn bậc 2, in ra kq			INPUT
+void F2(int x) {...} //tính toán gì đó, in ra kq				INPUT
+
+int ComputePowerV2() {...} //tính mũ 2, trả về kq				RETURN
+int ComputeSquareRootV2() {...} //tính căn bậc 2, trả về kq, làm tròn		RETURN
+int F3() {...} //tính toán gì đó, trả về kq					RETURN
+
+int ComputePowerV3(int x) {... } //tính mũ 2, trả về kq				INPUT-RETURN
+int ComputeSquareRootV3(int ahihi) {...} //tính căn bậc 2, trả về kq, làm tròn	INPUT-RETURN
+int F4(int num) (...} //tính toán gì đó, trả về kq				INPUT-RETURN
+
+* ĐẶT TÊN NHÓM CHO CÁC HÀM ĐỒNG DẠNG/CÙNG HÌNH DẠNG, GIỐNG ĐỊNH DẠNG, CÙNG STYLE: INPUT/OUTPUT
+  DATA TYPE ĐẠI DIỆN CHO NHIỀU HÀM/HÀM ĐƯỢC XEM LÀ VALUE!!! => HÀM ĐƯỢC XEM LÀ VALUE, TA CÓ QUYỀN TRUYỀN HÀM
+	VÀO TRONG HÀM KHÁC QUA PARAMETER!!!
+					LẬP TRÌNH HÀM - FUNCTIONAL PROGRAMMING
+					CALLBACK FUNCTION
+
+void SayHello0 (...}								NO INPUT - NO RETURN
+void SayHelloToEveryOne() {...}							NO INPUT - NO RETURN
+void F1) {...}									NO INPUT - NO RETURN
+---------------------------------------------------------------------------------------------
+			TÊN NHÓM HÀM NÀY LÀ X
+		VIÊT LẠI TÊN NHÓM CHO ĐẸP, RÕ NGỮ NGHĨA CỦA NHÓM VALUE KO VÀO KO RA
+			delegate void X();
+		X là tên của 1 nhóm hàm(values) mà có đặc điểm chung là ko vào ko ra			
+
+void ComputePower (int n) {...} //tính mũ 2, in ra kq				INPUT
+void ComputeSquareRoot(int n) {...} //tính căn bậc 2, in ra kq			INPUT
+void F2(int x) {...} //tính toán gì đó, in ra kq				INPUT
+---------------------------------------------------------------------------------------------
+			TÊN NHÓM HÀM NÀY LÀ Y
+		VIÊT LẠI TÊN NHÓM CHO ĐẸP, RÕ NGỮ NGHĨA CỦA NHÓM VALUE CÓ VÀO KO RA
+			delegate void Y(int);
+		X là tên của 1 nhóm hàm(values) mà có đặc điểm chung là CÓ vào ko ra	
+
+
+int ComputePowerV2() {...} //tính mũ 2, trả về kq				RETURN
+int ComputeSquareRootV2() {...} //tính căn bậc 2, trả về kq, làm tròn		RETURN
+int F3() {...} //tính toán gì đó, trả về kq					RETURN
+---------------------------------------------------------------------------------------------
+			TÊN NHÓM HÀM NÀY LÀ Z
+			delegate int DucDat();
+			delegate int X();
+
+int ComputePowerV3(int x) {... } //tính mũ 2, trả về kq				INPUT-RETURN
+int ComputeSquareRootV3(int ahihi) {...} //tính căn bậc 2, trả về kq, làm tròn	INPUT-RETURN
+int F4(int num) (...} //tính toán gì đó, trả về kq				INPUT-RETURN
+---------------------------------------------------------------------------------------------
+			TÊN NHÓM HÀM NÀY LÀ ZZZ
+			delegate int ZZZ(int);
+
+
+int, long, float, double mang rõ ý nghĩa của value nó đại diện!!!
+int: những thăng nguyên con
+float: những đứa lẻ lẻ
+Student: những bạn đang đi học bậc cao
+Employee: những values, bạn đang bán mình cho tư bản
+Drink: những values, món thức uống
+
+X, Y, Z, ZZZ Ơ TRÊN, RÕ NGHĨA CHƯA??? PHAN BIẸT ĐC HE??? HEM!!!!!
+CÁCH ĐẶT TÊN NHƯ TRÊN CHƯA RÕ RÀNG Ý NGHĨA!!! CAN GHI CHU RO HƠN VI TA CO ĐEN 4 LOẠI HAM KHAC NHAU!!!!
+ĐẶT THẾ NÀY NÈ, MỚI RÕ NGHĨA
+X LÀ NHÓM HÀM KO NHẬN VÀO, KO TRẢ RA	---> VIẾT GỌN HƠN CHO ĐẸP: delegate void X();
+Y LÀ NHÓM HÀM CÓ NHẬN VÀO, KO TRẢ RA				   delegate void Y(int);
+Z LÀ NHÓM HÀM KO NHẬN VÀO, CÓ TRẢ RA				   delegate int Z();
+ZZZ LÀ NHÓM HÀM CÓ NHẬN VÀO, CÓ TRẢ RA				   delegate int XYZ(int);
+
+KỂ TỪ NAY VỀ PHÍA CODE, BẠN ĐƯỢC QUYỀN XÀI X, Y, Z, XYZ NHƯ MỌI DATA TYPE THÔNG THƯỜNG KHÁC NHƯ
+STUDENT, LECTURER, PET, DOG....
+
+* X LÀ ĐẠI DIỆN CHO 1 ĐÁM HÀM CÓ STYLE delegate void X(); TUI MUỐN NÓI VỀ 1 HÀM CỤ THỂ NÀO ĐÓ TRONG ĐÁM NÀY
+
+void SayHello0 (...}				NO INPUT - NO RETURN	f1
+void SayHelloToEveryOne() {...}			NO INPUT - NO RETURN	a
+void F1) {...}					NO INPUT - NO RETURN	aa
+-------------------------
+delegate void X(); / tạo ra data type tên là X do loại value quá phức tạp, có thuật toán trong hàm/value
+
+X	f1 = bằng được cái hàm SayHello() nữa là ngon rồi
+X	a = bằng được cái hàm SayHelloToEveryOne() ở trên là ngon
+
+f1 là 1 cái hàm có style kiểu X, tức là 1 hàm ko vào ko ra dạng void X()
+	và cụ thể hàm này chính là hàm SayHello() ở trên hoặc 1 hàm khác cụ thể ở trên nhưng phải cùng style X
+
+	f1 = ??? gán được hàm ở trên là xong!!!!
+	f1 GỌI LÀM CON TRỎ HÀM VÌ NÓ = HOẶC TRỎ ĐẾN 1 HÀM CỤ THỂ - FUNCTION POINTER!!!
+
+DATA TYPE	BIẾN = VALUE
+
+
+5									a
+10									b
+15									c
+20
+25
+-------------------
+int 
+int s = 5
+
+=================================================================================================
+IV. CÁCH THỂ HIỆN, CÁCH ĐỊNH NGHĨA RA DATA TYPE CHO NHÓM DỮ LIỆU PHỨC TẠP {...} {...} void F() {}
+
+1. DATA TYPE DỮ LIỆU ĐƠN GIÁN
+* DATA TYPE: DANH TỪ CHUNG, LÀ TÊN GỌI CHUNG CHO 1 NHÓM DỮ LIỆU, THÔNG TIN ĐƠN GIẢN MÀ ĐÔNG DẠNG, CÙNG HÌNH
+DẠNG/ FORMAT
+* int/long: 5 10 15 20 100 100 -5... (NGUYỆN CON, KO LẺ MIẾNG)
+* float/double: 3.14 9.8 10% 3/4... (CÓ LẺ MIẾNG)
+
+2.1 DATA TYPE DỮ LIỆU PHỨC TẠP - KO PHẢI LÀ HÀM, MÀ LÀ ĐỐI TƯỢNG NÀO ĐÓ CÓ NHIÊU INFO
+* DATA TYPE: DANH TỪ CHUNG, LÀ TÊN GỌI CHUNG CHO 1 NHÓM DỮ LIỆU, THÔNG TIN PHỨC TẠP MÀ ĐỒNG DẠNG, CÙNG HÌNH
+DẠNG/ FORMAT
+* Person: {Tên..., Ngày sinh..., Nơi sinh...} (NGUYỄN THANH TÙNG, 1994, THÁI BÌNH...}
+* Singer: {Tên..., Ngày sinh..., Nơi sinh..., Nick: } (NGUYỄN THANH TÙNG, 1994, THÁI BÌNH, SƠN TÙNG M- TP}
+* Player, Footballer: {Tên..., Ngày sinh..., Nơi sinh..., Nick..., Number..., Goals..., CLB..., Awards...}
+{Messi, 1994, ... }
+Person, Singer, Player: nhóm người, nhóm đối tượng có nhiều info => gọi tên khác là: ENTITY (DATABASE)
+											CLASS (LẬP TRÌNH)
+											DATA TYPE: DẠNG DỮ LIỆU
+
+>>>>> CODE ĐỂ THỂ HIÊN Ý TƯỞNG LƯU TRỮ VÀ XỬ LÍ CÁC INFO NGOÀI ĐỜI BẰNG MÁY TÍNH (ABSTRACTION - TRỪU TƯƠNG
+HOÁ - BIỂU DIÊN INFO NGOÀI ĐỜI THỰC QUA MÁY TÍNH, PERSON NGOÀI ĐỜI -> CLASS TRONG OOP)
+
+public class Person 
+{ // Java
+	private String id;
+	private String năm;
+	private int yob;
+}
+//DATA TYPE LÀ TÊN CHUNG/DANH TỪ CHUNG CHO RẤT NHIỀU OBJECT PHỨC TẠP {...} NGOÀI KIA, GỒM BẠN, TÔI
+public class Person 					public class Person
+{ // C#							{
+	private string _id;					public string Id { get; set; } // Id có đc set() public???
+	private string _name;					public string Name { get; set; }
+	private int _yob;					public int Yob { get; set; }
+}							}
+
+// TẠO RA DỮ LIỆU -> BIẾN ĐI KÈM LÀ DANH TỪ RIÊNG, TÊN TẮT, NICK NAME CHO 1 OBJECT THẬT NGOÀI KIA
+//Person an = 1XxX, AN, 2003, HCM, ...}
+Person an = new Person(...); //Java
+Person an = new Person(...){...}; //C#: object initializer - tạo object, tạo value = dùng hàm Set(...)
+
+Data 	var 	value
+Type
+
+2.2 DATA TYPE DỮ LIỆU PHỨC TẠP - LÀ QUÁ TRỜI CÁC LOẠI HÀM,
+				HÀM CÓ: PP? F_NAME(P??) {...}
+					+ TÊN HÀM
+					+ CÓ TRẢ VỀ GIÁ TRỊ HAY KO
+					+ CÓ ĐÂU VÀO HAY KO
+					+ CODE BÊN TRONG HÀM ĐỂ XỨ LÍ INFO NÓI CHUNG { ...}
+
+* DATA TYPE: DANH TỪ CHUNG, LÀ TÊN GỌI CHUNG CHO 1 NHÓM DỮ LIỆU, THÔNG TIN MÀ ĐỒNG DẠNG, CÙNG HÌNH DẠNG/ FORMAT
+
+void SayHello() {...}
+void NhanEm () {...}
+void TellHer () {...}
+--------------------------
+delegate void X();
+vietsub: X là tên gọi chung/danh từ chung cho 1 nhóm hàm đồng dạng bề ngoài: ko nhận đầu vào, ko trả ra gì cả,
+chỉ xử lí gì đó bên trong {...}
+
+NGẦM TRONG THỂ HIỆN CODE, X LÀ 1 CLASS, 1 NHÓM PHỨC TẠP
+DATA TYPE CHO NHÓM PHỨC TẠP, TÊN NHÓM PHỨC TẠP THÌ CÒN GỌI LÀ CLASS. CLASS PERSON, CLASS PET, CLASS RECTANGLE...
+
+1
+2
+3
+4
+-----------
+int x = 20; 				// lưu info số nguyên
+Student s = new Student (...){...};	// lưu info SV
+
+void SayHello() {...}
+void NhanEm () {...}
+void TellHer () {...}
+--------------------------
+delegate void X(); >>>>> X LÀ 1 CLASS NHƯ STYLE PERSON, DOG, CAT, PET, LECTURER, DOCTER, USER, ....
+
+public class X [void X()] Delegate		public class Person
+{						{
+	_fName // tên hàm cần lưu			Id, Name, Yob ...
+	// vì x là tên chung cho nhiều hàm		// Person đại diện cho nhiều công dân
+	// nên x cần có chỗ để lưu tên hàm 		// Person phải có chỗ để lưu info công dân
+
+	// CONSTRUCTOR - PHỄU ĐỒ INFO BÊN NGOÀI VÀO BÊN TRONG CÁI CLASS/KHUÔN
+	public X(tên hàm muốn lưu trữ)			public Student(id, name, yob)
+	{						{
+		_fName = tên hàm muốn lưu trữ			Id = id;...
+	}						}
+
+	// GET SET TRUYỀN THỐNG JAVA			HOẶC VIẾT TẮT THEO STYLE PROPERTY GET; SET; CỦA C#
+	// LOMBOK (3RD PARTY)
+
+	public void Invoke() // hàm có sẵn khi tạo class Delegate X, hoặc tạo theo style nhanh, giống kiểu ToString() có sẵn kế thừa từ ông tổ OBJECT - INHERITANCE OOP
+	{
+		_fName() // tên hàm đc lưu trữ gửi vào sẽ đc run = cách thêm dấu () để run
+	}
+
+}						}	
+======================================
+>>>>> ĐẶC BIỆT CHO CÁI CLASS MÀ ĐẠI DIỆN CHO 1 NHÓM HÀM NÀO ĐÓ, TA KO CẦN MẤT SỨC VIẾT THOE STYLE CLASS TRUYỀN THỐNG
+
+delegate void X() LÀ ĐỦ RỒI, KO CẦN CODE THEO STYLE DÀI DÒNG CLASS TRUYỀN THỐNG 
+		  LÝ DO: TA CHỈ CẦN LƯU CÁI TÊN HÀM, DO TA ĐẠI DIỆN CHO 1 HÀM CÙNG STYLE
+			ĐẠI DIỆN HÀM NÀO THÌ CHỈ CẦN NÓI TÊN HÀM LÀ ĐỦ, QUA TÊN HÀM THÌ MÒ VÀO CHI TIẾT XỬ LÝ
+			CỦA HÀM Ở {...}, CODE NẾU CÓ CŨNG NGẮN, KO CẦN THIẾT public class ... {...}
+CODE NGẮN GỌN CHO CÁI CLASS ĐẠI DIỆN CHO NHÓM HÀM!!!!!
+
+delegate STYLE NHÓM HÀM Ở ĐÂY KÈM CÁI TÊN CHUNG LÀ ĐỦ RỒI
+delegate void X() // X: tên chung cho nhóm hàm ko vào ko ra
+delegate void Y(int) // Y: tên chung cho nhóm hàm nhận vào 1 con int ko ra
+delegate void YY (int, int) // YY: tên chung cho nhóm hàm nhận vào 2 con int, ko ra
+
+delegate int Z() //Z : tên chung cho nhóm hàm ko vào nhưng trả ra
+delegate int ZZ(int) //ZZ: tên chung cho nhóm hàm có 1 vào, trả ra
+delegate int NE (int, float) //NE: tên chung cho nhóm hàm có 2 vào int, float, có trả ra
+
+NHÓM HÀM NHIÊU - CLASS NHIÊU
+CŨNG NHƯ NHIÊU CLASS NGOÀI KIA: PERSON, CAR, DOG, CAT, PET, RECTANGLE, CIRCLE, TRIANGLE, FILE, STRING, ...
+
+3. XÀI DATA TYPE THÌ SAO???
+* KHAI BÁO BIẾN > THUỘC DATA TYPE > GÁN VALUE = NEW (...){...}
+int x = 10;							//đưa con số cho tao, số 10, tao gọi nó là x
+Student s = new Student(...) {...};				// đưa info sv đây cho tao, tao gọi hắn là s, an, binh,..
+
+X	f = new X (tên-hàm-cụ-thế-nào-đó-có-ở-đâu-đó); 		//đưa tên hàm vào cho tao, và gọi là f
+	f = new X(SayHello) ;
+
+KỂ TỪ NAY VỀ SAU, CÁI HÀM CỤ THỂ NÀO ĐÓ VÍ dỤ HÀM SayHe11o ĐC GỌI TÊN LÀ F 
+
+F LÀ NICK NAME CỦA HÀM SAYHELLO Ở ĐOẠN GHI CHÚ TRÊN!!!
+
+4. DELEGATE CÓ THÊM MỘT TRÒ ĐẶC BIỆT - NÓ CÓ KHẢ NĂNG LƯU NHIỀU TÊN HÀM CÙNG 1 LÚC
+   MULTICAST DELEGATES
+
+public class X [void X()] Delegate		
+{						
+	_fName // tên hàm cần lưu			
+	// vì x là tên chung cho nhiều hàm		
+	// nên x cần có chỗ để lưu tên hàm 
+	List<> danh-sách-các-tên-hàm-cùng-style
+	[] mảng-các-tên-hàm-cùng-style
+
+	//TÙY LÚC MÌNH GÁN TÊN HÀM VÀO F DELEGATE THÌ SẼ XÀI ĐƠN HÀM HAY ĐA HÀM CÙNG 1 LÚC!	
+
+	// CONSTRUCTOR - PHỄU ĐỒ INFO BÊN NGOÀI VÀO BÊN TRONG CÁI CLASS/KHUÔN
+	public X(tên hàm muốn lưu trữ)			
+	{						
+		_fName = tên hàm muốn lưu trữ			
+	}						
+
+	// GET SET TRUYỀN THỐNG JAVA			HOẶC VIẾT TẮT THEO STYLE PROPERTY GET; SET; CỦA C#
+	// LOMBOK (3RD PARTY)
+
+	public void Invoke() 
+	// hàm có sẵn khi tạo class Delegate X, hoặc tạo theo style nhanh, giống kiểu ToString() có sẵn kế thừa từ ông tổ OBJECT - INHERITANCE OOP
+	{
+		_fName() // tên hàm đc lưu trữ gửi vào sẽ đc run = cách thêm dấu () để run
+		List<> các hàm được gọi = cách thêm () trên từng tên hàm để run()
+	}
+
+	HÀM DẤU += ĐỂ GHÉP THÊM TÊN CÁC HÀM VÀO DANH SÁCH ĐẠI DIỆN!!!
+	// KỸ THUẬT OVERRIDE CÁC OPERATOR, ĐỊNH NGHĨA LẠI CÁC DẤU + - * / THAY VÌ LÀM TRONG TOÁN HỌC
+
+}							
+
+================================================================================
+REVIEW NHANH LẠI VỀ DELEGATE - ỦY NHIỆM, ỦY QUYỀN, TRAO QUYỀN, ĐẠI DIỆN, SỨ GIẢ, 1 PHIÊN BẢN CLONE, 1 NICK NAME KHÁC, 1 CÁCH GỌI TÊN KHÁC,...
+
+1. DELEGATE LÀ 1 CLASS NHƯ CÁC CLASS TRUYỀN THỐNG DOG, CAT, PERSON, PRODUCT ...
+   DELEGATE LÀ CLASS NAME, LÀ TÊN GỌI CHUNG, DANH TỪ CHUNG ĐẠI DIỆN CHO NHIỀU HÀM CÙNG 1 STYLE NÀO ĐÓ
+   NÓ DÙNG ĐỂ NÓI VỀ 1 TẬP HỢP CÁC HÀM CÙNG STYLE, THÔNG QUA NÓ CÓ THỂ BIỂU DIỄN / THAM CHIẾU / NÓI VỀ CÁC HÀM 
+   LÀ TÊN GỌI CHUNG TÊN TẬP HỢP NHÓM LÀM 
+
+   X LÀ TÊN GỌI CHO 1 NHÓM HÀM {F1() F2() F3() F4()...}
+
+2. KHAI BÁO VÀ SỬ DỤNG DELEGATE: DATATYPE 	TÊN-BIẾN 	= VALUE
+				TÊN DELEGATE 	NICK-NAME	1 HÀM CỤ THỂ 
+						CỦA 1 HÀM	NÀO ĐÓ ĐC GỌI TÊN MỚI
+
+delegate void X();
+X f = new Delegate(tên-hàm-mình-đặt-nick-là-f-bên-vế-trái-dấu-bằng)
+X f = new Delegate(TellHer)				void TellHer(){...}
+  f             -------------------------------------------> TellHer
+
+X f = TellHer; //viết ngắn gọn, new ngầm
+  f = NhanEM;  // trỏ vào hàm mới, tại 1 thời điệm biến lưu 1 value
+  f += SaySweetWords; //f là đại diện nhiều thân chủ, nhiều hàm: NhanEm + SaySweetWords;
+			// multicast delegates
+
+Gọi hàm: 
+  f.Invoke();
+  f(); 	// f = TellHer => suy ra f() cũng sẽ là TellHer() chạy hàm hoy
+DELEGATE: LÀ CÁCH ĐẶT TÊN GỌI CHO 1 HÀM KHÁC, 1 HÀM CÓ SẴN CÓ THÊM 1 NICK MỚI, 1 TÊN MỚI
+F() RUN CŨNG NHƯ THEO TELLHER() RUN
+
+LUẬT SƯ 	NÓI	CŨNG NHƯ THÂN CHỦ NÓI
+==================================================================================
+V. CÁC BƯỚC, CÔNG THỨC ĐỂ CHƠI VỚI DELEGATE
+* ĐỊNH NGHĨA NHANH LẠI VỀ DELEGATE
+- DELEGATE LÀ 1 LOẠI CLASS ĐẶC BIỆT - BẢN CHẤT MÀY CŨNG LÀ 1 DATA TYPE NHƯ CÁC LOẠI DATA TYPE: int, long, float, double, Person, Student, Lecturers, Pet, Dog...
+
+- DELEGATE LÀ LOẠI CLASS ĐẶC BIỆT NÓ DÙNG ĐỂ LƯU INFO, INFO ĐẶC BIỆT: TÊN CÁC HÀM THAY VÌ LƯU INFO THÔNG THƯỜNG KIỂU NHƯ NGÀY THÁNG NĂM SINH, TÊN TUỔI...
+
+- CHƠI VỚI DELEGATE NGHĨA LÀ GIÚP CHO 1 HÀM BÌNH THƯỜNG CÓ THÊM 1 TÊN GỌI KHÁC NỮA, LÀ CÁCH ĐẶT NICKNAME CHO 1 HÀM NÀO ĐÓ, 1 TÊN GỌI THỨ 2 CHO HÀM NÀO ĐÓ (GIỐNG MÌNH CÓ TÊN GỌI Ở NHÀ LÀ TÍ TÈO), HÀM CÓ THÊM 1 TÊN GỌI KHÁC, VÌ LÀ TÊN GỌI KHÁC NÊN CÒN GỌI LÀ CON TRỎ ĐẾN HÀM, CON TRỎ HÀM 
+
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,259 @@
+I. LẬP TRÌNH LÀ GÌ?
+- Lập trình là công việc của những Developer.
+- Developer dùng ngôn ngữ lập trình mà họ biết để viết ra các câu lệnh cho máy tính/phần cứng, ra lệnh cho hệ điều hành làm những việc gì đó. 
+- Developer viết ra 1 đống câu chữ (theo cú pháp, ngôn ngữ định trước) hàm chứa các lệnh và máy tính/OS sẽ thực thi lệnh này và đem lại 1 kết quả gì đó. 
+
+Ví dụ: Dev viết lệnh yêu cầu OS/Máy tính
+	- Bày ra màn hình 1 cửa sổ trắng, trống trơn
+	- Show trên cùng dàn menu
+	- Vùng trắng trơn ở dưới, có dấu nháy chớp chớp
+	- Vùng trắng trơn lắng nghe coi có ai gõ phím gì không, nếu có hiện thị phím gõ lên vùng trắng trớn
+	- Nếu ai đó nhấn menu có tên file | save | gõ tên tập tin lưu lại những gì đã gõ
+	>>> Phần mềm Notepad
+
+Dân Dev dự liệu các tình huống xử lý cho app họ viết ra và CPU/OS/Phần cứng "nhắm mắt" làm theo. Dân Dev lập trình chính là tạo tập hợp các bước, 1 câu chuyện sẽ diễn ra trăm lần như 1, gã viết kịch bản, gã đạo diễn, gã giật dây OS/CPU
+
+Dân Dev tạo ra tập lệnh, tập kịch bản, câu chuyện ---> CPU/OS hiểu được điều đó
+
+II. SDK là gì? <Software development kit - Bộ công cụ dành cho việc phát triển phần mềm / phần mềm có sẵn, phần mềm "công cụ" để giúp Dev làm phần mềm khác>
+
+- Download SDK <=> Download các gói phần mềm có sẵn từ Vendor(Nhà cung cấp) cung cấp cả ngôn ngữ lập trình kèm theo cú pháp goc và câu lệnh cần gõ.
+- Cài SDK lên máy, về logic bạn Dev sẵn sàng làm app, viết tập câu lệnh "English like" để chuẩn bị bắt CPU/OS làm việc.
+- SDK là từ chung chung chỉ về nhóm phần mềm giúp dân Dev làm phần mềm.
+- SDK có thể mở rộng cho các thiệt bị có hỗ trợ lập trình: Card đồ họa(Graphic card), thiết bị IOT, đều có cung cấp SDK thư viện/ phần mềm lập trình giúp giao tiếp với chính thiết bị đó. Hãng làm ra phần cứng cung cấp luôn SDK để diều khiển thiết bị đó qua code.
+
+III. .Net SDK là gì?
+- Java: cũng có SDK được cung cấp bởi công ty sở hữu ngôn ngữ lập trình Java - Oracle, gọi là SDK cho Java là JDK (Java Development Kit) 
+	cũng hỗ trợ đa nền ngay từ đầu tiên lúc ra đời: independent platform 
+
+- .Net: Công nghệ, kỹ thuật, nền tảng, môi trường được tạo ra bởi Microsoft để giúp Dev tạo ra các loại app chạy được trên nhiều hệ diều hành - cross platform. 
+	Lịch sử ban đầu: .Net Framework(ver 4.8) -> chỉ chạy trên windows
+			 .Net Core(ver 3.1) -> chạy đa nền
+			Hợp nhất 2 cái trên và nhảy cóc version lên .Net 5.x
+								    .Net 6.x số chẵn LTS - Long term support
+								    .Net 7.x
+								    .Net 8.x LTS
+
+>>>>>>>>>>> App hỗ trợ/ chạy đa nền (Hệ điều hành + Phần cứng mà hệ điều hành chạy trên)
+					Windows chạy trên CPU ARM, Intel, AMD
+					MAC			ARM, M1, ...
+		.DLL chạy được cả Windows, Linux, mà code ko viết lại, không cần cài lại file .cs(.java) - Source code
+		"Machine like" -> Write one, run any where
+
+- .NET SDK: Bộ công cụ lập trình dành cho Dev, viết app theo công nghệ .net, version 8. late
+
+* Khi cài .NET SDK thì ta sẽ có:
+- SDK: C:\Program Files\dotnet\sdk		<=> JDK: java development kit (JRE included)
+- RUNTIME: C:\Program Files\dotnet\shared	<=> JRE: Java runtime environment
+	ASP.NET CORE
+	.NET DESKTOP
+	.NET RUNTIME -> cung cấp cầu nối giữa app console & OS
+
+Dùng NNLT viết ra src code/ kịch bản câu lệnh 		App Console 		Window Desktop 		Web / Web API
+	Cần SDK để viết câu lệnh			.cs/.vb			.cs			.cs
+							   |			  |			  |
+    Cần SDK để biến đổi lệnh thành "Machine Style"	.dll/.exe		.exe			.dll
+
+							RUNTIME			RUNTIME			RUNTIME
+							   OS			  OS			  OS
+
+* .NET 5,6,7,8 cài sống chung vs nhau trong cùng thư mục C:\Program Files\dotnet\
+
+IV. KIỂM TRA .NET SDK & RUNTIME - Làm quen với CLI - COMMAND LINE INTERFACE
+1. Mở CMD để kiểm tra SDK đã cài đủ hay chưa? (lệnh dotnet đã được khai báo trong biến môi trường lúc setup .NET rồi)
+- Gõ lệnh kiểm tra version lớn nhất của .NET SDK đã cài
+	> dotnet --version
+- Gõ lệnh kiểm tra version của các SDKs đã cài
+	> dotnet --sdks
+- Gõ lệnh kiểm tra version của các RUNTIMES đã cài
+	> dotnet --runtimes
+- Gõ lệnh kiểm tra version các SDKs/RUNTIMES đã cài, hiện thị ngắn gọn
+	> dotnet --info
+
+2. DOTNET CLI
+- Tập hợp 1 nhóm lệnh giúp làm các công việc liên quan đến việc tạo dự án, biên dịch, biến đổi code ta viết thành "Machine style - do not tight with a specific operating system"
+- Gọi lệnh làm việc với dự án viết code qua lệnh donet <tham số tương ứng> tham số dài, tra cứu là được
+	Gọi lệnh dontnet -> phần tất yếu đi vào mức lương 2K trở lên: CI/CD/DevOps	
+- Lệnh đơn giản:
+	dotnet new
+	dotnet build
+	dotnet run
+	dotnet sln
+	...
+- Để học được, tra cứu nhanh các lệnh, ở CMD bạn gõ: dotnet -h (help)
+
+V. Chương trình đầu tay - HelloWorld
+1. Tạo thư mục con HappyNewYear dưới thư mục cha Session01-HelloWorld\
+2. CMD trên explorer để vào thư mục HappyNewYear vừa tạo
+3. Gõ lệnh trong CMD để tạo project chứa code là file Program.cs (.java), chứa hàm Main() truyền thống 
+	> dotnet new console --framework net8.0 --use-program-main
+4. Dùng Notepad, editor để edit file src .cs trong thư mục HappyNewYear
+5. Sửa code theo cú pháp C# rất giống code java | save code
+6. Ra CMD, gõ lệnh
+	> dotnet build 		SDK sẽ dùng tool MSBUILD để tạo file "nhị phân - Machine like - Độc lập nền" .dll và .exe dành riêng cho windows ở thư mục \Bin\Debug\8.0\
+	> dotnet run để chạy app console ở cmd hoặc Double Click .exe
+	> .dll đem sang bên Linux, MacOS, nếu đã cài sẵn RUNTIME của OS đó, thì gõ lệnh sau để chạy .dll ở terminal
+		dotnet <tên file .dll>
+===================
+THƯ MỤC CHỨA CODE
+1. Các Project/Solution được lưu trữ trên HDD/SDD ở thư mục ko được có dấu Tiếng Việt, kí tự đặc biệt, unicode. Dùng 26 chữ cái chuẩn Tiếng Anh + Dấu gạch ngang, gạch chân(Shift _), dấu chấm
+2. Ko để src code ở ổ C:, trong thư mục C:\... vì OS Windows hay lock thư mục, ổ C lại ảnh hưởng việc tạo file .exe .dll
+3. Để ở Desktop thì okie, cài windows coi chừng Desktop, C:\Users\Tên-bạn-login\Desktop
+4. User Login vào máy ko nên có dấu Tiếng Việt
+5. Cấu trúc thư mục chứa src, gợi ý:
+	Desktop\
+	D:\
+		PRN211\ CSHARP\
+			Session01-HelloWorld
+			Session02-Language
+			Session03-OOP  	
+
+VI. ĐỂ LẬP TRÌNH CHUYÊN NGHIỆP/ NHANH CHÓNG THÌ CẦN NHỮNG CÔNG CỤ GÌ?
+1. Ngôn ngữ lập trình để viết câu lệnh, kịch bạn hành động của app
+- C#, VB.NET, C++ .NET, f# (#SHARP) -> Microsoft chế ra 2001
+	xài chung .Net Runtime, SDK luôn
+- Java, GROOVY, SCALA -> xài chung JDK, JRE
+2. Cần SDK(CLI)			RUNTIME
+	Code, đóng gói 		chạy app
+3. Công cụ gõ code - Text thuần là đạt, lập trình là gõ English-like
+3.1. Công cụ hạng nhẹ gõ text: Notepad
+3.2. Công cụ hạng vừa gõ text, thêm nhiều plugin/extension
+	code editor: Sublime, Braket, Atom, VS code
+3.3. Công cụ hạng nặng - IDE - Integrated Development Environment
+- Có đủ đồ chơi khí cài thằng này, ít cần plugin, extension
+- Có khi cài nó thường có luôn SDK included (Combo) 
+.NET -> VS - Visual Studio (Microsoft), Rider (JetBrain)
+.Java -> Netbeans (Oracle/Apache), Eclipse (IBM), IntellIJ (JetBrain)
+
+============================================
+1. OBJECT - CLASS
+- Class là một Khuôn -> dùng để tạo ra những object từ Khuôn
+- Class là mô tả chung về Object: có bên trong đặc đính (field, backing field, property) và hành vi (method, fuction)
+- Class có nhiều loại khác nhau ...
+-> Chú ý đến 1 loại Class mà object từ nó tương lai sẽ đẩy xuống Database
+
+OOP WORLD/DOMAIN/ENV 		<-------------------------------> 	MAP ÁNH XẠ DATABASE DOMAIN  <--------------> ERD
+class Student								table STUDENT (DBMS)			Design Entity Relationship Diagram
+{
+	public string Id {get ; set; }				| Id	| Name	| Email	| ...
+	public string Name {get ; set; }
+	public string Email {get ; set; }
+	...
+
+}
+
+object:					a row/record/tuple
+Student s = new Student(...){...}     -> insert into Student values(...)
+Programming				SQL
+
+* NHỮNG CLASS SẼ MAP XUỐNG DB -> ĐẶT NÓ Ở THƯ MỤC ENTITY/ENTITIES TRONG DỰ ÁN
+
+2. QUẢN LÝ NHIỀU OBJECT -> CẦN NHỮNG ĐÓI TƯỢNG NÀO ĐÓ CÓ THỂ CHƯA ĐƯỢC NHIỀU OBJECT KHÁC, ĐỐI TƯỢNG CHỨA NHIỀU ĐỐI TƯỢNG KHÁC -> CÁI TÚI, CÁI TỦ, CÁI HỘP, CÁI CONTAINER ĐÃ XUẤT HIỆN
+-> CLASS CABINET CLASS BOX CLASS BAG
+{
+
+	CHỨA NHIỀU ĐỐI TƯỢNG CẦN ĐỰNG BÊN TRONG CÁI HỘP
+	Student s1;
+	Student s2;
+	Student s3;
+	Student s4, s5, s6, s7, s8, s9, s10...
+	// khai báo lẻ, dễ làm, dễ hiểu, ko thuận lợi cho số đông -> CONCRETE OBJECT DECLARATION
+
+	// MẢNG LÀ KỸ THUẬT THAY THẾ ƯU VIỆT HƠN, TỐT HƠN KHAI BÁO LẺ
+	// KHAI BÁO ĐƯỢC NHIỀU BIẾN LẺ CÙNG LÚC
+	Student[] arr = new Student[300]	// fixed size
+	count đếm số phần tử đang có, chèn vào vị trí thứ [count]
+
+	// DÙNG COLLECTIONS, NHÓM CÁC CLASS THAY THẾ CHO MẢNG, CŨNG CHỨA BÊN TRONG
+	// NHIỀU MÓN ĐỒ NHƯ MẢNG, NHƯNG CO GIÃN KÍCH THƯỚC - TÚI DORAEMON
+	// QUÊN COUNT ĐI!!!
+	// KO XÀI PHÍ RAM, CẦN ĐẾN ĐÂU CẤP ĐẾN ĐÓ, KO DÙNG PHÍ THU HỒI!!!
+	
+
+	// quản lý, là thao tác, là CRUD: Create, Retrieve/Read, Update, Delete
+	void Add()
+	{
+		arr[count++] = ??? ai đó, object nào đó
+	}
+	
+	void PrintAll()
+	{
+		for trên arr để in info từng [i]
+	}
+}
+
+>>>>>>>>>>>>
+TỦ CHỨA HỒ SƠ CV, TỦ CHỨA PHONE, TỜ GIẤY CHỨA MÓN ĂN/FOOD/DRINK
+CHUỒNG CÓ CHỨA NHIỀU PET, DOG, THÚ....
+-> NHIỀU OBJECT (OBJECT LOẠI KHÁC), VẪN CÓ CRUD CĂN BẢN
+-> BAO NHIÊU LOẠI INFO CẦN QUẢN LÝ, BẤY NHIÊU CABINET TƯƠNG TỰ!!!!!
+-> CÓ 1 CÁCH HAY HƠN: ONE SIZE FIT ALL
+			1 HỘP ĐA NĂNG ĐƯỢC KO?
+	class Cabinet					class Cabinet<T> // Type
+	{						{
+		Student[]					T[]
+		CRUD						CRUD(T t)
+	}						}
+							GENERIC, CLASS CHƠI VỚI NHIỀU LOẠI CLASS KHÁC,
+	class Cabinet					CLASS TRUYỀN VÀO NHƯ THAM SỐ
+	{						DATA TYPE IS PASSED AS A PARAMETER
+		Lecturer[]
+		CRUD					void F(int x) -> F(5) -> a value is passed
+	}						
+							Cabinet<Student> tu =
+	class Cabinet					Cabinet<Lecturer> tuKhac =
+	{						//Java: ArrayList<Student> tu =
+		Food[]
+		CRUD
+	}
+
+	class Cabinet
+	{
+		Phone[]
+		CRUD
+	}
+
+
+3. DỰ ÁN "lỚN", APP LỚN
+- 1 APP CẦN LÀM CHO KHÁCH HÀNG, CHÍNH LÀ CÂU TRẢ LỜI ĐỂ GIẢI QUYẾT VẤN ĐỀ KHÁCH HÀNG ĐẶT RA
+- KHÁCH HÀNG CÓ NHIỀU VẤN ĐỀ VỀ QUẢN LÝ CHUỖI NHÀ HÀNG/KHÁCH SẠN CỦA HỌ
+	-> 1 CÁI APP ĐỂ FIX CÁC VẤN ĐỀ, QUẢN LÝ TOÀN DIỆN VIỆC LÀM ĂN CỦA CHUỖI K/S N/H
+	-> 1 SOLUTION
+
+- 1 SOLUTION ------------------------------------------------> 1 APP -> END USER
+	CHIA ĐỂ TRỊ CÁC CÔNG VIỆC CODING
+	THÀNH CÁC ĐƠN VỊ NHỎ - PROJECT DỄ DÀNG QUẢN LÝ, PHÂN CHIA CÔNG VIỆC ...
+
+	PROJECT 1 - UI - FE TƯƠNG TÁC USER		
+		   * CONSOLE APP (CUI) .EXE .DLL				MAIN () ĐỂ CHẠY
+		   WINDOWS FORMS (GUI)  .EXE .DLL -> PE
+		   WEB PAGE .DLL URL
+	
+	PROJECT 2 - CHƠI VỚI DATABASE
+			ENTITIES/CLASS ĐI KÈM SẼ MAP VỚI TABLE
+			CLASS LIBRARY PROJECT -> .DLL THƯ VIỆN			KO CÓ MAIN()
+			* REPOSITORY/REPOSITORIES
+				ENTITIES/
+
+	PROJECT 3 - CLASS LIBRARY PROJECT -> .DLL THƯ VIỆN KO CÓ MAIN()
+			XỬ LÝ ĐÁM DATA LẤY TỪ REPO, ĐƯA VÀO RAM TÍNH TOÁN
+			* SERVICES PROJECT
+				CABINET/BOX/BAG
+
+					> MẢNG CÁC OBJECT MAP TỪ DATABASE ĐỂ DÙNG, TÍNH TOÁN
+				-> TÍNH TOÁN XONG ĐẨY CHO UI Ở PROJECT 1 ĐỂ RENDER
+
+
+	PROJECT 4 - CLASS LIB KHÁC NẾU CẦN
+
+=> KIẾN TRÚC 3 LỚP - 3-LAYER ARCHITECTURE
+
+ĐỪNG QUÊN: P1 CẦN/REFERS TO/ADD DEPENDENCY -> P3
+	   P3 CẦN			   -> P2 (DB)
+
+ĐỪNG QUÊN COPY LOCAL
+
+
+
+
+
