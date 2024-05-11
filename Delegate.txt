@@ -735,7 +735,7 @@ GỌI HÀM ĐỂ CHẠY
 	f.Invoke(...)
 
 ================================================================================
-BIÊN BÌNH THƯỜNG = GIÁ TRỊ; RÔI XONG! ! !
+BIẾN BÌNH THƯỜNG = GIÁ TRỊ; RÔI XONG! ! !
 int yob = 2004; xong
 Student s = new Student(...) {...} röi xong
 
@@ -743,11 +743,66 @@ BIÊN DELEGATE = GIÁ TRỊ TÊN HÀM; HÀM CỤ THÊ; HÀM ĂN DANH, HÀM STYLE
 GỌI HÀM ĐỂ RUN() GỌI HÀM GIÁN TIẾP QUA NICK NAME, UỶ QUYỀN, UỶ NHIỆM, UỶ THÁC...
 ================================================================================
 
+TỔNG KẾT NHANH GỌN VỀ DELEGATE: 
 
+CHUYỆN LUẬT SƯ   = THÂN CHỦ   = ĐẠI DIỆN NÓI GIÙM, PHÁT NGÔN GIÙM
+	NICKNAME = HÀM-NÀO-ĐÓ;
 
+HÀM-NÀO-ĐÓ (...)
+{
+    CODE...
+}
 
+CON TRỎ, BIẾN TRỎ ĐẾN HÀM NÀO ĐÓ - HÀM CÓ TÊN GỌI KHÁC NỮA
 
+CODE & HÀM Ở TRÊN CÓ THỂ THAY = ANONYMOUS FUNCTION & LAMBDA EXPRESSION
 
+I. KHAI BÁO BIẾN DELEGATE DÙNG ĐẠI DIỆN CHO 1 HÀM 
+1. TỰ KHAI BÁO DELEGATE RIÊNG
+-> delegate void F(...);
+-> delegate ??? F(...);
+->	    ??? thay bằng int, long,... :delegate int F();
+
+2. DÙNG DELEGATE CÓ SẴN CUNG CẤP BỞI .NET SDK
+
+- Action : hàm void F(ko đầu vào)
+- Action<???> : hàm void F(từ 1...16 đầu vào khác nhau - dùng generic)
+- Func<???,?> : hàm có trả về giá trị ? F(từ 0...16 đầu vào khác nhau - generic)
+		-> Func<???, int>
+- Predicate<?> : tương đương hàm Func<?, bool>
+		hàm có trả về giá trị bool đúng sai, nhưng có nhận ĐÚNG DUY NHẤT 1 ĐẦU VÀO - GENERIC LUÔN
+
+II. KHAI BÁO & GÁN GIÁ TRỊ CHO BIẾN DELEGATE
+- ĐẶT TÊN CHO 1 HÀM NÀO ĐÓ, TẠO DỰNG CÂU CHUYỆN LUẬT SƯ = THÂN CHỦ
+
+-› Action 	      f = Một_Hàm_Nào_Đó;						//ko trả về kq
+-> Action<int> 	      f = Một_ Hàm_Nào_Đó_Mà_Có_1_ Đầu_Vào_ Int;			//ko trả về kq
+-> Func<int> 	      f = Một_Hàm_Nào_Đó_Mà_Có_Trả_Về_Int_Và_Ko_Đầu_Vào;		//có trả về kq
+-> Func<int, string>  f = Một_Hàm_Nào_Đó_Mà_Có_Trả_Về_Int_Và_1_Đầu_Vào_String; 		// có trả về kq
+-› Predicate<string>  f = Một_Hàm_Nào_Đó_Mà_Có_Trả_Vè_Boo1_Và_1_Đầu_Vào_String; 	// có trả về kq
+-> Predicate<Student> f = Một_Hàm_Nào_Đó_Mà_Có_Trả_Vè_Boo1_Và_1_Đầu_Vào_Student;	//có trả về kq
+
+-> Action 	f = hàm-ẩn-danh;
+		  = delegate() {...code-của-hàm...};
+
+-> Action 	f = hàm-ẩn-danh; // lambda expression
+		  = () => {...code của hàm ...};
+
+-> Action<?> 	f = hàm-ẩn-danh; // lambda expression
+		  = (?) => {...code của hàm ...};
+
+* NHỚ KĨ: NẾU HÀM ẨN DANH, HÀM LAMBDA CÓ THAM SỐ ĐẦU VÀO THÌ NHỚ LÀ PHẢI GHI TRONG PHẦN
+		(???) =>
+		delegate (???)
+	vì ta đang bàn về hàm có đầu vào, phải ghi ra đầu vào
+
+* NHỚ QUY TẮC TỐI ƯU RÚT GON THAM SỐ Ở HÀM () => VÀ THÂN HÀM => {} TRONG KHI VIẾT BIỂU THỨC LAMBDA - HÀM VÔ DANH TINH GỌN
+
+III. RUN HÀM, CHẠY HÀM, GỌI HÀM CHẠY 1 CÁCH GIÁN TIẾP QUA NICKNAME; KO GỌI HÀM TRỰC TIẾP; RIÊNG HÀM ẨN DANH MẤT TÊN RỒI NÊN GỌI QUA NICKNAME
+
+-> Biến (tham số đưa vào nếu cần);		// f(???);
+
+-> Biến.Invoke (tham số đưa vào nếu cần);	// f.Invoke(???);
 
 
 
