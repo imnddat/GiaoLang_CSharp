@@ -803,6 +803,55 @@ III. RUN HÀM, CHẠY HÀM, GỌI HÀM CHẠY 1 CÁCH GIÁN TIẾP QUA NICKNAME;
 -> Biến (tham số đưa vào nếu cần);		// f(???);
 
 -> Biến.Invoke (tham số đưa vào nếu cần);	// f.Invoke(???);
+==========================================================================================================
+VII. DELEGATE IN USE, IN ACTION - CÁCH DELEGATE ĐƯỢC ỨNG DỤNG TRONG THỰC TẾ
+1. TRUYỀN DELEGATE VÀO TRONG 1 HÀM KHÁC
+
+Void HamBao(int x);
+Void HamBao(Action f)	f = hàm-nào-đó-có-sẵn-hoặc-code-ngay-tại-đó
+			  = delegate(){} hoặc ()=>{}
+{				anonymous	lambda
+	HÀM BAO CỨ FOR DO WHILE THOẢI MÁI
+	TA LÀM GÌ VỚI f here?
+	GỌI NÓI VÌ NÓ LÀM HÀM BÊN NGOÀI ĐƯA VÀO - HÀM THÌ ĐƯỢC QUYỀN RUN()
+
+	f(); // f.Invoke();	// callback, ta gọi mày nè!!!
+				// lập trình hàm - functional programming
+				// hàm mình chơi láng với các hàm bên ngoài
+				// gọi hàm bên ngoài, bên ngoài làm gì ai biết???
+				// f có logic xử lý riêng, được đưa vào hàm mình gọi -> inject 
+				// dependency injection
+				// tao chơi với mọi thứ bên ngoài, loose coupling, flexible
+}
+
+***** TA THIẾT KẾ 1 CÁI HÀM HUB, HÀM ĐẦU MỐI, HÀM STYLE DoOnDemand (yêu cầu bên ngoài đưa vào)
+CUNG CẤP DỊCH VỤ LÀM THEO YÊU CẦU CỦA AI ĐÓ ĐƯA ĐẾN - HÀM (CÓ CODE) ĐƯA VÀO HÀM CHÍNH CỦA TA
+NHẬN THẦU THEO YÊU CẦU, VẠN SỰ TUY DUYÊN, TA PHÓ MẶC CHO CODE BÊN NGOÀI ĐƯA VÀO!!!
+
+		[CODE BÊN NGOÀI XÀI DATA BÊN TRONG CỦA TA! !!]
+
+2. TRUYỀN HÀM CÓ ĐẦU VÀO VÀO 1 HÀM KHÁC
+
+void DoOnDemand(Action<> f) ======================== void F(?)	void F(int x) 	F(5)
+{
+	// gọi f thế nào
+	f(); //ăn đòn!!!, đưa tham số vào thằng f
+	f(5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
