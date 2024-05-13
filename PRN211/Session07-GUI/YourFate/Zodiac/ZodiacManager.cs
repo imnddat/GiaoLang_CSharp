@@ -1,6 +1,7 @@
 ﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Services;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace Zodiac
 {
@@ -65,7 +66,18 @@ namespace Zodiac
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult answer = MessageBox.Show("Do you really want to exit?","Exit?",
+                MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+            //hàm này trả về giá trị lựa chọn của user khi user bấm nút Yes|No| Ok | Cancel...
+            //=> giá trị này thuộc data type DialogResult
+            //Dialog: đoạn hội thoại
+
+            if (answer == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            
         }
     }
 
