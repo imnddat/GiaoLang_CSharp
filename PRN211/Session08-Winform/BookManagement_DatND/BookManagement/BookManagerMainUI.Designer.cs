@@ -31,7 +31,7 @@
             lblTitle = new Label();
             grbSearchCriteria = new GroupBox();
             btnSearch = new Button();
-            txtBookDescription = new TextBox();
+            txtDescription = new TextBox();
             txtBookName = new TextBox();
             lblBookDescription = new Label();
             lblBookName = new Label();
@@ -61,7 +61,7 @@
             // 
             grbSearchCriteria.BackColor = SystemColors.GradientInactiveCaption;
             grbSearchCriteria.Controls.Add(btnSearch);
-            grbSearchCriteria.Controls.Add(txtBookDescription);
+            grbSearchCriteria.Controls.Add(txtDescription);
             grbSearchCriteria.Controls.Add(txtBookName);
             grbSearchCriteria.Controls.Add(lblBookDescription);
             grbSearchCriteria.Controls.Add(lblBookName);
@@ -83,15 +83,16 @@
             btnSearch.TabIndex = 2;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // txtBookDescription
+            // txtDescription
             // 
-            txtBookDescription.BorderStyle = BorderStyle.FixedSingle;
-            txtBookDescription.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txtBookDescription.Location = new Point(555, 50);
-            txtBookDescription.Name = "txtBookDescription";
-            txtBookDescription.Size = new Size(160, 25);
-            txtBookDescription.TabIndex = 1;
+            txtDescription.BorderStyle = BorderStyle.FixedSingle;
+            txtDescription.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txtDescription.Location = new Point(555, 50);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(160, 25);
+            txtDescription.TabIndex = 1;
             // 
             // txtBookName
             // 
@@ -165,6 +166,7 @@
             btnUpdate.TabIndex = 1;
             btnUpdate.Text = "Update a book";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnExit
             // 
@@ -176,6 +178,7 @@
             btnExit.TabIndex = 3;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // dgvBookList
             // 
@@ -232,7 +235,7 @@
         private Label lblBookDescription;
         private Label lblBookName;
         private Button btnSearch;
-        private TextBox txtBookDescription;
+        private TextBox txtDescription;
         private Button btnCreate;
         private Button btnDelete;
         private Button btnUpdate;

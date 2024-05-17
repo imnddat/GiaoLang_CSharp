@@ -34,6 +34,7 @@ namespace Services
             arr.Add(new Book()
             {
                 BookId = 1,
+                Description ="Sách dành cho mọi lứa tuổi thanh thiếu niên",
                 BookName = "Đời Ngắn Đừng Ngủ Dài-Short Life Don't Sleep Long",
                 Author = "Robin Sharma",
                 PublicationDate = "2023-01-01",
@@ -44,6 +45,7 @@ namespace Services
             {
                 BookId = 2,
                 BookName = "Mình Là Nẵng, Việc Của Mình Là Chói Chang-I Am the Sun, My Job Is to Shine Bright",
+                Description ="Hãy phát huy tố chất vốn có của riêng bạn, ở trong bạn",
                 Author = "Kazuko Watanabe",
                 PublicationDate = "2023-01-01",
                 BookCategoryId = 5
@@ -53,6 +55,7 @@ namespace Services
             {
                 BookId = 3,
                 BookName = "Tuổi Trẻ Đáng Giá Bao Nhiêu-How Much Is Youth Worth",
+                Description ="Những bài học kỹ năng mềm gọn trong 1 trang giấy",
                 Author = "Rosie Nguyễn",
                 PublicationDate = "2018-01-01",
                 BookCategoryId = 5

@@ -17,7 +17,7 @@ namespace BookManagement
         //vì DetailForm cx là 1 class, nên nó có prop như bt. Hơn bt
         //là nó là class có thể render(Bố/Cha clas Form của SDK lo
         //phần render - mối quan hệ kế thừa
-        public Book SelectedBook { get; set; } = null; 
+        public Book SelectedBook { get; set; } = null;
         // mặc định form này mở lên, ko có book nào cả
         // nếu muốn có book thì phải .SelectedBook = cái muốn gắn vào!!!
         public BookDetailForm()
@@ -53,7 +53,7 @@ namespace BookManagement
             //CHECK CÓ PHẢI LÀ EDIT KO
             // CHECK BIẾN SELECTEDBOOK COI CÓ ĐƯỢC SET KHÁC NULL KO
             // NẾU CÓ SÁCH THÌ FILL VÀO CÁC Ô
-            if(SelectedBook != null)
+            if (SelectedBook != null)
             {
                 txtBookId.Text = SelectedBook.BookId.ToString();
                 txtBookName.Text = SelectedBook.BookName;
@@ -64,6 +64,11 @@ namespace BookManagement
                 cboBookCategoryId.SelectedValue = SelectedBook.BookCategoryId;
 
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
