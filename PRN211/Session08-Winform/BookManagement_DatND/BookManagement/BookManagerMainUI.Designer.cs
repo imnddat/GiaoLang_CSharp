@@ -50,7 +50,7 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 39.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.Font = new Font("Segoe UI", 39.75F, FontStyle.Bold);
             lblTitle.Location = new Point(29, 25);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(397, 71);
@@ -65,7 +65,7 @@
             grbSearchCriteria.Controls.Add(txtBookName);
             grbSearchCriteria.Controls.Add(lblBookDescription);
             grbSearchCriteria.Controls.Add(lblBookName);
-            grbSearchCriteria.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            grbSearchCriteria.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold | FontStyle.Italic);
             grbSearchCriteria.Location = new Point(29, 114);
             grbSearchCriteria.Name = "grbSearchCriteria";
             grbSearchCriteria.Size = new Size(917, 100);
@@ -76,7 +76,7 @@
             // btnSearch
             // 
             btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSearch.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnSearch.Location = new Point(772, 47);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(75, 28);
@@ -88,7 +88,7 @@
             // txtDescription
             // 
             txtDescription.BorderStyle = BorderStyle.FixedSingle;
-            txtDescription.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txtDescription.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             txtDescription.Location = new Point(555, 50);
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(160, 25);
@@ -97,7 +97,7 @@
             // txtBookName
             // 
             txtBookName.BorderStyle = BorderStyle.FixedSingle;
-            txtBookName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txtBookName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             txtBookName.Location = new Point(174, 50);
             txtBookName.Name = "txtBookName";
             txtBookName.Size = new Size(160, 25);
@@ -106,7 +106,7 @@
             // lblBookDescription
             // 
             lblBookDescription.AutoSize = true;
-            lblBookDescription.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblBookDescription.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblBookDescription.Location = new Point(392, 50);
             lblBookDescription.Name = "lblBookDescription";
             lblBookDescription.Size = new Size(136, 21);
@@ -116,7 +116,7 @@
             // lblBookName
             // 
             lblBookName.AutoSize = true;
-            lblBookName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblBookName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblBookName.Location = new Point(59, 50);
             lblBookName.Name = "lblBookName";
             lblBookName.Size = new Size(95, 21);
@@ -126,7 +126,7 @@
             // lblBookList
             // 
             lblBookList.AutoSize = true;
-            lblBookList.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lblBookList.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold | FontStyle.Italic);
             lblBookList.Location = new Point(29, 242);
             lblBookList.Name = "lblBookList";
             lblBookList.Size = new Size(99, 30);
@@ -136,30 +136,31 @@
             // btnCreate
             // 
             btnCreate.FlatStyle = FlatStyle.Flat;
-            btnCreate.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCreate.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
             btnCreate.Location = new Point(26, 46);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(178, 47);
             btnCreate.TabIndex = 0;
-            btnCreate.Text = "Create a book";
+            btnCreate.Text = "Add a book";
             btnCreate.UseVisualStyleBackColor = true;
             btnCreate.Click += btnCreate_Click;
             // 
             // btnDelete
             // 
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDelete.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
             btnDelete.Location = new Point(26, 192);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(178, 47);
             btnDelete.TabIndex = 2;
             btnDelete.Text = "Delete a book";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdate.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
             btnUpdate.Location = new Point(26, 120);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(178, 47);
@@ -171,7 +172,7 @@
             // btnExit
             // 
             btnExit.FlatStyle = FlatStyle.Flat;
-            btnExit.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnExit.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
             btnExit.Location = new Point(748, 604);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(178, 47);
@@ -185,7 +186,6 @@
             dgvBookList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvBookList.Location = new Point(29, 289);
             dgvBookList.Name = "dgvBookList";
-            dgvBookList.RowTemplate.Height = 25;
             dgvBookList.Size = new Size(653, 400);
             dgvBookList.TabIndex = 1;
             dgvBookList.SelectionChanged += dgvBookList_SelectionChanged;
@@ -195,7 +195,7 @@
             grbAction.Controls.Add(btnCreate);
             grbAction.Controls.Add(btnUpdate);
             grbAction.Controls.Add(btnDelete);
-            grbAction.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            grbAction.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold | FontStyle.Italic);
             grbAction.Location = new Point(722, 289);
             grbAction.Name = "grbAction";
             grbAction.Size = new Size(224, 273);

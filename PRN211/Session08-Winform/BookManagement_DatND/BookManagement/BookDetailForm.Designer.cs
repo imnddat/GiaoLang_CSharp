@@ -55,7 +55,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold);
             label1.Location = new Point(43, 37);
             label1.Name = "label1";
             label1.Size = new Size(0, 65);
@@ -64,13 +64,14 @@
             // btnSave
             // 
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSave.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
             btnSave.Location = new Point(758, 145);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(178, 47);
             btnSave.TabIndex = 1;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // grbBookDetail
             // 
@@ -91,7 +92,7 @@
             grbBookDetail.Controls.Add(txtBookId);
             grbBookDetail.Controls.Add(lblBookName);
             grbBookDetail.Controls.Add(lblBookID);
-            grbBookDetail.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            grbBookDetail.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold | FontStyle.Italic);
             grbBookDetail.Location = new Point(30, 110);
             grbBookDetail.Name = "grbBookDetail";
             grbBookDetail.Size = new Size(675, 494);
@@ -101,7 +102,7 @@
             // 
             // cboBookCategoryId
             // 
-            cboBookCategoryId.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            cboBookCategoryId.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             cboBookCategoryId.FormattingEnabled = true;
             cboBookCategoryId.Location = new Point(256, 435);
             cboBookCategoryId.Name = "cboBookCategoryId";
@@ -110,7 +111,7 @@
             // 
             // dtpPublicationDate
             // 
-            dtpPublicationDate.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dtpPublicationDate.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             dtpPublicationDate.Format = DateTimePickerFormat.Short;
             dtpPublicationDate.Location = new Point(256, 264);
             dtpPublicationDate.Name = "dtpPublicationDate";
@@ -120,7 +121,7 @@
             // txtAuthor
             // 
             txtAuthor.BorderStyle = BorderStyle.FixedSingle;
-            txtAuthor.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txtAuthor.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             txtAuthor.Location = new Point(256, 382);
             txtAuthor.Name = "txtAuthor";
             txtAuthor.Size = new Size(250, 25);
@@ -129,7 +130,7 @@
             // txtPrice
             // 
             txtPrice.BorderStyle = BorderStyle.FixedSingle;
-            txtPrice.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txtPrice.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             txtPrice.Location = new Point(513, 323);
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(120, 25);
@@ -138,7 +139,7 @@
             // txtQuantity
             // 
             txtQuantity.BorderStyle = BorderStyle.FixedSingle;
-            txtQuantity.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txtQuantity.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             txtQuantity.Location = new Point(256, 323);
             txtQuantity.Name = "txtQuantity";
             txtQuantity.Size = new Size(120, 25);
@@ -147,7 +148,7 @@
             // txtBookDescription
             // 
             txtBookDescription.BorderStyle = BorderStyle.FixedSingle;
-            txtBookDescription.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txtBookDescription.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             txtBookDescription.Location = new Point(256, 155);
             txtBookDescription.Multiline = true;
             txtBookDescription.Name = "txtBookDescription";
@@ -158,7 +159,7 @@
             // lblCategory
             // 
             lblCategory.AutoSize = true;
-            lblCategory.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCategory.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblCategory.Location = new Point(59, 435);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(78, 21);
@@ -168,7 +169,7 @@
             // lblPrice
             // 
             lblPrice.AutoSize = true;
-            lblPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblPrice.Location = new Point(420, 322);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(46, 21);
@@ -178,7 +179,7 @@
             // lblAuthor
             // 
             lblAuthor.AutoSize = true;
-            lblAuthor.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAuthor.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblAuthor.Location = new Point(59, 381);
             lblAuthor.Name = "lblAuthor";
             lblAuthor.Size = new Size(61, 21);
@@ -188,7 +189,7 @@
             // llbQuantity
             // 
             llbQuantity.AutoSize = true;
-            llbQuantity.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            llbQuantity.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             llbQuantity.Location = new Point(59, 322);
             llbQuantity.Name = "llbQuantity";
             llbQuantity.Size = new Size(72, 21);
@@ -198,7 +199,7 @@
             // lblDate
             // 
             lblDate.AutoSize = true;
-            lblDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblDate.Location = new Point(59, 267);
             lblDate.Name = "lblDate";
             lblDate.Size = new Size(129, 21);
@@ -208,7 +209,7 @@
             // lblBookDescription
             // 
             lblBookDescription.AutoSize = true;
-            lblBookDescription.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblBookDescription.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblBookDescription.Location = new Point(59, 159);
             lblBookDescription.Name = "lblBookDescription";
             lblBookDescription.Size = new Size(94, 21);
@@ -218,7 +219,7 @@
             // txtBookName
             // 
             txtBookName.BorderStyle = BorderStyle.FixedSingle;
-            txtBookName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txtBookName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             txtBookName.Location = new Point(256, 101);
             txtBookName.Name = "txtBookName";
             txtBookName.Size = new Size(250, 25);
@@ -227,7 +228,7 @@
             // txtBookId
             // 
             txtBookId.BorderStyle = BorderStyle.FixedSingle;
-            txtBookId.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txtBookId.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             txtBookId.Location = new Point(256, 50);
             txtBookId.Name = "txtBookId";
             txtBookId.Size = new Size(160, 25);
@@ -236,7 +237,7 @@
             // lblBookName
             // 
             lblBookName.AutoSize = true;
-            lblBookName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblBookName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblBookName.Location = new Point(59, 105);
             lblBookName.Name = "lblBookName";
             lblBookName.Size = new Size(95, 21);
@@ -246,7 +247,7 @@
             // lblBookID
             // 
             lblBookID.AutoSize = true;
-            lblBookID.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblBookID.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblBookID.Location = new Point(59, 50);
             lblBookID.Name = "lblBookID";
             lblBookID.Size = new Size(68, 21);
@@ -256,7 +257,7 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 39.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.Font = new Font("Segoe UI", 39.75F, FontStyle.Bold);
             lblTitle.Location = new Point(30, 21);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(550, 71);
@@ -266,7 +267,7 @@
             // btnCancel
             // 
             btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancel.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
             btnCancel.Location = new Point(758, 223);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(178, 47);

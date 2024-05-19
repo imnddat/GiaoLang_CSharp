@@ -55,20 +55,56 @@ namespace BookManagement
             // NẾU CÓ SÁCH THÌ FILL VÀO CÁC Ô
             if (SelectedBook != null)
             {
+                lblTitle.Text = "Update Selected Book";
                 txtBookId.Text = SelectedBook.BookId.ToString();
+                txtBookId.Enabled = false; // ko cho edit cột BookID trong Mode Edit
                 txtBookName.Text = SelectedBook.BookName;
                 txtBookDescription.Text = SelectedBook.Description;
+                //dtpPublicationDate.Text = SelectedBook.PublicationDate.ToString();
+                dtpPublicationDate.Value = SelectedBook.PublicationDate;
+                //DateTime data type
                 txtQuantity.Text = SelectedBook.Quantity.ToString();
                 txtPrice.Text = SelectedBook.Price.ToString();
                 txtAuthor.Text = SelectedBook.Author;
+
                 cboBookCategoryId.SelectedValue = SelectedBook.BookCategoryId;
 
+            }
+            else
+            {
+                lblTitle.Text = "Create a new Book";
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Book book = new Book()
+            {
+                BookId = int.Parse(txtBookId.Text),
+                BookName = txtBookName.Text,
+                Description = txtBookDescription.Text,
+                PublicationDate = dtpPublicationDate.Value,
+                Quantity = int.Parse(txtQuantity.Text),
+                Price = double.Parse(txtPrice.Text),
+                Author = txtAuthor.Text,
+                BookCategoryId = int.Parse(cboBookCategoryId.SelectedValue.ToString())
+            };
+
+            BookService service = new BookService();
+            if(SelectedBook != null)
+            {
+                service.UpdateBookFromUI(book);
+            }else
+            {
+                service.AddBookFromUI(book);
+            }
+
+            Close(); // sau khi add/update thì tắt form detail
         }
     }
 }

@@ -9,17 +9,25 @@ namespace BookManagement
         private Book _selected = null; // chờ ai đó nhấn 1 dòng trong grid/table thì nó được gán = cuốn sách đang chọn
                                        // đẩy cuốn sách đc chọn sang màn hình update
 
+        private BookService _service = new BookService();
         public BookManagerMainUI()
         {
             InitializeComponent();
         }
 
+        private void FillDataGridView()
+        {
+            dgvBookList.DataSource = null; // xóa trắng grid
+            dgvBookList.DataSource = _service.GetAllBooks();
+        }
+
         public void BookManagerMainUI_Load(object sender, EventArgs e)
         {
-            BookService service = new BookService();
-            dgvBookList.DataSource = null; // xóa trắng grid
-            dgvBookList.DataSource = service.GetAllBooks();
-        }
+            FillDataGridView();
+            //dgvBookList.DataSource = null; // xóa trắng grid
+            //dgvBookList.DataSource = _service.GetAllBooks();
+        } //Bad Smells - Robert C. Martin - Clean Code, SOLID, Agile Manifesto
+          //HÀM FILL DATA VÀO GRID ĐC GỌI NHIỀU LẦN Ở NÚT CREATE, UPDATE, DELETE, LOAD FORM
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -31,6 +39,8 @@ namespace BookManagement
             //thêm phần render
             BookDetailForm f = new BookDetailForm();
             f.ShowDialog(); // render
+
+            FillDataGridView();
         }
 
         private void dgvBookList_SelectionChanged(object sender, EventArgs e)
@@ -59,6 +69,7 @@ namespace BookManagement
                 // đưa sách sang
                 f.SelectedBook = _selected;
                 f.ShowDialog();
+                FillDataGridView();
             }
             else
             {
@@ -92,6 +103,26 @@ namespace BookManagement
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if(_selected == null)
+            {
+                MessageBox.Show("Please select a certain book to delete", "Select one book", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DialogResult answer = MessageBox.Show("Do you really want to delete this book?", "Delete confirm?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (answer == DialogResult.No)
+            {
+                return;
+            }
+
+            _service.DeleteBookFromUI(_selected);
+            FillDataGridView();
+
+            _selected = null;
         }
     }
 }
