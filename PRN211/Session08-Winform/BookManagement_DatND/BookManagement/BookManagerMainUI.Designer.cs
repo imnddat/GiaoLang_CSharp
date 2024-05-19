@@ -59,7 +59,7 @@
             // 
             // grbSearchCriteria
             // 
-            grbSearchCriteria.BackColor = SystemColors.GradientInactiveCaption;
+            grbSearchCriteria.BackColor = SystemColors.GradientActiveCaption;
             grbSearchCriteria.Controls.Add(btnSearch);
             grbSearchCriteria.Controls.Add(txtDescription);
             grbSearchCriteria.Controls.Add(txtBookName);
@@ -192,6 +192,7 @@
             // 
             // grbAction
             // 
+            grbAction.BackColor = SystemColors.GradientActiveCaption;
             grbAction.Controls.Add(btnCreate);
             grbAction.Controls.Add(btnUpdate);
             grbAction.Controls.Add(btnDelete);
